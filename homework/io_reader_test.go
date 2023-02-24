@@ -25,6 +25,20 @@ func TestGoalParsers(t *testing.T) {
 			},
 			want: "Goal",
 		},
+		{
+			name: "",
+			args: args{
+				strings.NewReader("G()()()()(al)"),
+			},
+			want: "Gooooal",
+		},
+		{
+			name: "",
+			args: args{
+				strings.NewReader("(al)G(al)()()G"),
+			},
+			want: "alGalooG",
+		},
 	}
 
 	for _, tt := range tests {
